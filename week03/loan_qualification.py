@@ -24,7 +24,7 @@ else:
         is_approved = False
     elif income >= 7 or payment >= 7:
         is_approved = True
-    elif income >= 4 or payment >= 4:
+    elif income >= 4 and payment >= 4:
         is_approved = True
     else:
         is_approved = False
