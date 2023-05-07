@@ -1,3 +1,4 @@
+#Creativity: TBD
 """
 Author: David Labra Gaona
 Purpose: Create your own text-based adventure game with at least three levels of
@@ -36,4 +37,6 @@ elif level1_option.lower() == "collecting":
     You decide to look for food and collect it. Your survival instinct is 
     telling you that no other task is more important.
     """
-
+else:
+    level1 = "The option you selected is not correct."
+print(level1)
