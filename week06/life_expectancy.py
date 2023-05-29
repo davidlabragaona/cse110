@@ -1,3 +1,5 @@
+#Creativity: User entered country display: min, max and avg.
+
 #Author: David Labra Gaona
 #Purpose: Life Expectancy program
 
@@ -73,10 +75,43 @@ for line in year_cases:
 average /= len(year_cases)
 print(f"For the year {year_user}:")
 print(f"The average life expectancy across all countries was {average:.2f}")
-print(f"The max life expectancy was in {highest_life_expectancy_country:.2f} with {highest_life_expectancy:.2f}")
-print(f"The min life expectancy was in {lowest_life_expectancy_country:.2f} with {lowest_life_expectancy:.2f}")
+print(f"The max life expectancy was in {highest_life_expectancy_country} with {highest_life_expectancy:.2f}")
+print(f"The min life expectancy was in {lowest_life_expectancy_country} with {lowest_life_expectancy:.2f}")
 print()
 
 #Creativity
 country = input("Enter the name of a country: ")
+
+highest_life_expectancy = 0
+lowest_life_expectancy = 99999.9
+counter = 0
+
+with open("life-expectancy.csv", ) as dataset:
+  for i, line in enumerate(dataset):
+    if i == 0:
+      continue
+
+    line = line.strip().split(",")
+    country_line = line[0]
+
+    if country_line.lower() == country.lower():
+      year = int(line[2])
+      life_expectancy = float(line[3])
+      counter += 1
+      average += life_expectancy
+
+      if life_expectancy < lowest_life_expectancy:
+        lowest_life_expectancy = life_expectancy
+        lowest_life_expectancy_year = year
+  
+
+      if life_expectancy > highest_life_expectancy:
+        highest_life_expectancy = life_expectancy
+        highest_life_expectancy_year = year
+
+average /= counter
+
+print()
+print (f"Life expectancy for {country}:")
+print(f"min: {lowest_life_expectancy:.2f}({lowest_life_expectancy_year}), max: {highest_life_expectancy:.2f}({highest_life_expectancy_year}), avg: {average:.2f} ")
 
